@@ -3,11 +3,15 @@
  */
 package ru.udm.pfr.models;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author pd199717
@@ -29,9 +33,11 @@ public class MfcData {
 	public String field2;
 	public String field3;
 	public String field4;
-	public String date;
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date date;	
+	
 	@OneToOne
-	@JoinColumn(name = "user")
+	@JoinColumn(name = "name")
 	public User user;
 	public Boolean isOpfr;
 	public Boolean isDeleted;
@@ -144,7 +150,7 @@ public class MfcData {
 	/**
 	 * @return возвращает значение date
 	 */
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
@@ -152,7 +158,7 @@ public class MfcData {
 	 * @param устанавливает
 	 *            значение date в date
 	 */
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

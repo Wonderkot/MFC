@@ -1,0 +1,24 @@
+<Configuration status="debug" name="MyApp" packages="">
+	<Appenders>
+		<RollingFile name="RollingFile" fileName="logs/MFC.log"
+			filePattern="logs/$${date:yyyy-MM}/RTZ-%d{yyyy-MM-dd-HH}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d{dd MMM yyyy HH:mm:ss,SSS} [%p] %c{1}.[%M] %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="5"
+					modulate="true" />
+				<SizeBasedTriggeringPolicy size="5 MB" />
+			</Policies>
+		</RollingFile>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="%c{1}.[%M]%m%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level="debug">
+			<AppenderRef ref="RollingFile" />
+			<AppenderRef ref="STDOUT" />
+		</Root>
+	</Loggers>
+</Configuration>

@@ -22,7 +22,7 @@ public class MfcServiceServiceImpl implements MfcServiceService {
 	MfcServiceDao mfcServiceDao;
 	
 	@Override
-	public List<MfcService> geServiceList() {
+	public List<MfcService> getServiceList() {
 		return (List<MfcService>) mfcServiceDao.findAll();
 	}
 

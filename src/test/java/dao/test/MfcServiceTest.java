@@ -32,7 +32,7 @@ public class MfcServiceTest {
     
     @Test
     public void getServicesList() {
-    	mfcService.geServiceList();
+    	mfcService.getServiceList();
     }
 
 }

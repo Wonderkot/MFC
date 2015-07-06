@@ -1,0 +1,186 @@
+.styled-select select {
+	background: transparent;
+	display: block;
+	padding: 5px;
+	font-size: 16px;
+	line-height: 1;
+	border: 0;
+	border-radius: 0;
+	height: 34px;
+	-webkit-appearance: none;
+}
+
+*+html .styled-select select {
+	width: 100%;
+}
+
+IE fix
+.styled-select {
+	height: 34px;
+	overflow: hidden;
+	background: url(down_arrow_select.jpg) no-repeat right #ddd;
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
+}
+
+/* .center-block {
+	margin: 0 auto;
+	width: 300px;
+} */
+a {
+	text-decoration: none;
+}
+
+select {
+	margin-bottom: 10px;
+}
+
+.trace {
+	width: 90%;
+	height: 300px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	word-wrap: break-word;
+}
+
+.errorText {
+	font-size: 28px;
+	color: red;
+	font-weight: bold;
+}
+
+.bezh {
+	background: #febb78;
+}
+
+.yellow {
+	background: #fef936;
+}
+
+.orange {
+	background: #ff8040;
+}
+
+.red {
+	background: #ff3c3c;
+}
+
+.grey {
+	background: #efefef;
+	background: rgba(144, 144, 144, 0.15);
+	border-right: 1px solid white;
+}
+
+.green {
+	background: #e7f3d4;
+	background: rgba(184, 243, 85, 0.3);
+}
+
+.td:nowrap {
+	white-space: nowrap;
+}
+
+.mycollapse {
+	width: 60%;
+	margin: 0 auto;
+}
+
+.warning {
+	background-color: #FCF8E3;
+}
+
+.success {
+	background-color: #DFF0D8;
+}
+
+.info {
+	background-color: #D9EDF7;
+}
+
+.copyright {
+	color: #808080;
+	font-size: 80%;
+	text-align: center;
+	margin: 10px 0px;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	height: 75px;
+	background-color: #F5F5F5;
+}
+
+.custom-title {
+	width: 100px;
+	font-size: 16px;
+}
+
+.panel-width {
+	width: 100%;
+}
+
+.custom-input {
+	width: 30px;
+}
+
+.custom-input-2 {
+	width: 60px;
+}
+
+.fio {
+	width: 140px;
+}
+
+.custom-form imput {
+	
+}
+
+.fix-button {
+	vertical-align: top;
+}
+
+.error {
+	border-color: red;
+}
+
+.custom-modal-footer {
+	padding: 0px;
+}
+
+.day-input {
+	width: 30px;
+}
+
+.year-input {
+	width: 60px;
+}
+
+.custom-header {
+	height: 0px;
+}
+
+.custom-panel-pad {
+	padding: 0px 15px;
+}
+
+.custom-margin {
+	margin-bottom: 0px;
+}
+
+.panel-body {
+	padding: 5px;
+}
+
+.table {
+	width: 45%;
+}
+.service-small {
+    font-size: 12px;
+    padding: 5px;   
+}
+.center-block_custom {
+	margin: 0 auto;
+	width: 300px;
+}

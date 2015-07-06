@@ -11,13 +11,24 @@
 
 	<mvc:default-servlet-handler />
 	<context:component-scan base-package="ru.pfr.udm.controllers"></context:component-scan>
-	<mvc:annotation-driven />
+	<mvc:annotation-driven />	
+	<mvc:resources location="/res/" mapping="/res/**"></mvc:resources>
 
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
-		<property name="prefix" value="/WEB-INF/view/" />
-		<property name="suffix" value=".jsp" />
+	<bean id="templateResolver"
+		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+		<property name="prefix" value="/WEB-INF/templates/" />
+		<property name="suffix" value=".html" />
+		<property name="templateMode" value="HTML5" />
+		<property name="characterEncoding" value="UTF-8"/>
+		<property name="cacheable" value="false"/>			
 	</bean>
+	<bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
+		<property name="templateResolver" ref="templateResolver" />		
+	</bean>
+	<bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+		<property name="templateEngine" ref="templateEngine" />
+		<property name="characterEncoding" value="UTF-8" />
+		<property name="contentType" value="UTF-8"/>		
+	</bean>	
 
 </beans>

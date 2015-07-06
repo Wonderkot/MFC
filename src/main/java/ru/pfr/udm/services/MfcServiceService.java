@@ -12,5 +12,5 @@ import ru.udm.pfr.models.MfcService;
  *
  */
 public interface MfcServiceService {
-	public List<MfcService> geServiceList();
+	public List<MfcService> getServiceList();
 }

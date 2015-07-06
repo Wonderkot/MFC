@@ -9,5 +9,5 @@ import ru.udm.pfr.models.User;
 
 @Repository
 public interface UserDao extends CrudRepository<User, Long> {
-	public List<User> findByName(String name);
+	public List<User> findByName(String name); 
 }

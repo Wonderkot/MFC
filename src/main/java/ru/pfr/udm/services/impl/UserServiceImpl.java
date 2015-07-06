@@ -3,6 +3,7 @@
  */
 package ru.pfr.udm.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ru.pfr.udm.services.UserService;
 import ru.udm.pfr.dao.UserDao;
+import ru.udm.pfr.models.Mfc;
 import ru.udm.pfr.models.User;
 
 /**
@@ -25,14 +27,12 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional
 	@Override
-	public List<User> findAll() {
-		List<User> users = null;
-		//userDao.findAll();
-		return users;
+	public List<Mfc> getDistrict(User user) {
+		List<User> users = userDao.findByName(user.getName());
+		List<Mfc> mfcs = new ArrayList<>();
+		for (User tempUser : users) {
+			mfcs.add(tempUser.getMfc());
+		}
+		return mfcs;
 	}
-	
-	public void msg() {
-		System.out.println("test");
-	}
-
 }

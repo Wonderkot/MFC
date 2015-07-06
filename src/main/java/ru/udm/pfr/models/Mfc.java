@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  * @author wonderkot
- *
+ * По факту, это класс обозначающий район
  */
 @Entity
 public class Mfc {

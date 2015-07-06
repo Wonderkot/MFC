@@ -11,14 +11,14 @@ import javax.validation.constraints.NotNull;
 
 /**
  * @author wonderkot
- *
+ * Класс, описывающий услугу
  */
 @Entity
-public class Service {
+public class MfcService {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@Column
+	@Column(length = 10000)
 	@NotNull
 	private String title;
 

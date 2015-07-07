@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -21,6 +22,8 @@ public class MfcService {
 	@Column(length = 10000)
 	@NotNull
 	private String title;
+	@Transient
+	private MfcData mfcData;
 
 	public Long getId() {
 		return id;
@@ -36,6 +39,20 @@ public class MfcService {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	/**
+	 * @return возвращает значение mfcData
+	 */
+	public MfcData getMfcData() {
+		return mfcData;
+	}
+
+	/**
+	 * @param устанавливает значение mfcData в mfcData
+	 */
+	public void setMfcData(MfcData mfcData) {
+		this.mfcData = mfcData;
 	}
 
 }

@@ -3,8 +3,6 @@
  */
 package ru.pfr.udm.services;
 
-import java.util.List;
-
 import ru.udm.pfr.models.MfcData;
 
 /**
@@ -13,7 +11,7 @@ import ru.udm.pfr.models.MfcData;
  */
 public interface MfcDataService {
 
-	public List<MfcData> getOldValues(Long id);	
+	public MfcData getOldValues(Long mfc,Long service);	
 	
 	public void insertRecord(MfcData mfcData);
 	

@@ -10,9 +10,9 @@
 	<!-- Uncomment and your base-package here: <context:component-scan base-package="org.springframework.samples.web"/> -->
 
 	<mvc:default-servlet-handler />
-	<context:component-scan base-package="ru.pfr.udm.controllers"></context:component-scan>
+	<context:component-scan base-package="ru.pfr.udm.controllers"/>
 	<mvc:annotation-driven />	
-	<mvc:resources location="/res/" mapping="/res/**"></mvc:resources>
+	<mvc:resources location="/res/" mapping="/res/**"/>
 
 	<bean id="templateResolver"
 		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">

@@ -9,12 +9,13 @@ import org.springframework.data.repository.CrudRepository;
 
 import ru.udm.pfr.models.Mfc;
 import ru.udm.pfr.models.MfcData;
+import ru.udm.pfr.models.MfcService;
 
 /**
  * @author pd199717
  *
  */
 public interface MfcDataDao extends CrudRepository<MfcData, Long> {
-	public List<MfcData> findAllByMfcAndIsDeleted(Mfc mfc,Boolean isDeleted);
+	public MfcData findFirstByMfcAndMfcServiceAndIsDeleted(Mfc mfc,MfcService service,Boolean isDeleted);
 	public List<MfcData> findAllByIsDeleted(Boolean isDeleted);
 }

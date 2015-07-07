@@ -1,0 +1,5 @@
+1.0.3 Spring Data JPA и вообще полностью всё перенесено на Spring
+1.0.4 models, dao, services
+1.0.5 test cases
+1.0.6 controller+view
+1.0.7 thymleaf support

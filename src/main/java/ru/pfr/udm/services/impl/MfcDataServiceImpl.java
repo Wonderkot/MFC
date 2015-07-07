@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 import ru.pfr.udm.services.MfcDataService;
 import ru.udm.pfr.dao.MfcDao;
 import ru.udm.pfr.dao.MfcDataDao;
+import ru.udm.pfr.dao.MfcServiceDao;
 import ru.udm.pfr.models.Mfc;
 import ru.udm.pfr.models.MfcData;
+import ru.udm.pfr.models.MfcService;
 
 @Service
 public class MfcDataServiceImpl implements MfcDataService {
@@ -23,19 +25,25 @@ public class MfcDataServiceImpl implements MfcDataService {
 	@Autowired
 	MfcDao mfcDao;
 
+	@Autowired
+	MfcServiceDao mfcServiceDao;
+
 	@Override
-	public List<MfcData> getOldValues(Long id) {
-		log.info("Получаем старые значения по идентификатору МФЦ(района) {}",
-				id);
-		Mfc mfc = mfcDao.findOne(id);
-		List<MfcData> mfcDatas = mfcDataDao
-				.findAllByMfcAndIsDeleted(mfc, false);
-		if (mfcDatas != null && !mfcDatas.isEmpty()) {
-			log.info("Получено записей: {}", mfcDatas.size());
-		} else {
-			log.warn("Записей не найдено");
+	public MfcData getOldValues(Long mfc, Long service) {
+		log.info("Получаем старые значения по идентификатору МФЦ(района) {} для услуги {}",
+				mfc,service);
+		Mfc district = mfcDao.findOne(mfc);
+		MfcService mfcService = mfcServiceDao.findOne(service);		
+		MfcData mfcData = mfcDataDao
+				.findFirstByMfcAndMfcServiceAndIsDeleted(district, mfcService,
+						false);		
+		if (mfcData != null) {
+			log.info("Запсь найдена");
 		}
-		return mfcDatas;
+		else {
+			log.warn("Запись не найдена");
+		}
+		return mfcData;
 	}
 
 	@Override
@@ -46,8 +54,7 @@ public class MfcDataServiceImpl implements MfcDataService {
 		if (existedRecord == null) {
 			log.info("Запись не была найдена, будет добавлена новая запись");
 			mfcDataDao.save(mfcData);
-		}
-		else {
+		} else {
 			log.info("Запись была найдена, будет произведено обновление");
 			existedRecord.setField1(mfcData.getField1());
 			existedRecord.setField2(mfcData.getField2());
@@ -61,7 +68,7 @@ public class MfcDataServiceImpl implements MfcDataService {
 	public void setDeleted() {
 		log.info("Ищем записи, которые не помечены для удаления");
 		List<MfcData> mfcDatas = mfcDataDao.findAllByIsDeleted(false);
-		log.warn("{} записей будет помечено как удалённые!",mfcDatas.size());
+		log.warn("{} записей будет помечено как удалённые!", mfcDatas.size());
 		for (MfcData mfcData : mfcDatas) {
 			mfcData.setIsDeleted(true);
 			mfcDataDao.save(mfcData);

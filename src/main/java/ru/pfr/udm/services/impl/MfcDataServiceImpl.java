@@ -29,16 +29,17 @@ public class MfcDataServiceImpl implements MfcDataService {
 	MfcServiceDao mfcServiceDao;
 
 	@Override
-	public MfcData getOldValues(Long mfc, Long service) {
-		log.info("Получаем старые значения по идентификатору МФЦ(района) {} для услуги {}",
-				mfc,service);
-		Mfc district = mfcDao.findOne(mfc);
-		MfcService mfcService = mfcServiceDao.findOne(service);		
+	public MfcData getOldValues(Long mfcId, Long serviceId) {		
+		Mfc district = mfcDao.findOne(mfcId);		
+		MfcService mfcService = mfcServiceDao.findOne(serviceId);
+		log.info("Получаем старые значения для района {} для услуги {}",
+				district.getTitle(),mfcService.getId());
 		MfcData mfcData = mfcDataDao
 				.findFirstByMfcAndMfcServiceAndIsDeleted(district, mfcService,
 						false);		
 		if (mfcData != null) {
-			log.info("Запсь найдена");
+			log.info("Запись найдена");
+			log.info(mfcData.getField3());
 		}
 		else {
 			log.warn("Запись не найдена");

@@ -8,8 +8,8 @@
 <link href="res/css/style.css" rel="stylesheet" />
 </head>
 <body>
-	<form method="post" action="#" th:action="@{/valuesOfMfc}" th:object="${services}"
-		target="sended.html">
+	<form method="post" action="#" th:action="@{/valuesOfMfc}"
+		th:object="${wrapper}" target="sended.html">
 		<table class="table table-bordered">
 			<tr>
 				<th colspan="4" class="text-center">Заполните данные</th>
@@ -22,38 +22,49 @@
 				<td>№</td>
 				<td colspan="2">Наименование услуги</td>
 			</tr>
-			<th:block th:each="service,row: ${services}">
+			<th:block th:each="service,row: ${wrapper.services}">
 				<tr>
-					<td th:text="${row.index+1}"></td>
-					<td th:text="${service.title}"></td>
+					<td><span th:text="${row.index+1}" /> <input type="text"
+						hidden="true" th:field="*{services[__${row.index}__].id}" /></td>
+					<td><span th:text="${service.title}" /></td>
 					<td>
 						<div>
-							Услуга, предусмотренная соглашением "ДА"-1, "НЕТ"-0 <select>
-								<option
-									th:value="${service.mfcData != null} ? ${service.mfcData.field1} : '2' ">3</option>
-								<option>0</option>
-							</select>
+							Услуга, предусмотренная соглашением "ДА"-1, "НЕТ"-0
+							<div>
+								<select th:field="*{services[__${row.index}__].mfcData.field1}">
+									<option selected="selected"
+										th:value="${service.mfcData != null} ? ${service.mfcData.field1} : '1' ">1</option>
+									<option
+										th:value="${service.mfcData != null} ? ${service.mfcData.field1} : '0' ">0</option>
+								</select>
+							</div>
 						</div>
 						<div>
 							Количество обращений по услуге за месяц<br /> <font color="red">МФЦ
 							</font> <input type="text"
+								th:field="*{services[__${row.index}__].mfcData.field2}"
 								th:value="${service.mfcData != null} ? ${service.mfcData.field2} : '' " /><br />
 							<font color="red">УПФР</font> <input type="text"
+								th:field="*{services[__${row.index}__].mfcData.field3}"
 								th:value="${service.mfcData != null} ? ${service.mfcData.field3} : '' " />
 						</div>
-
 						<div>
-							Информационное взаимодействие <select>
-								<option>KD</option>
-								<option>ss</option>
-							</select>
+							Информационное взаимодействие
+							<div>
+								<select th:field="*{services[__${row.index}__].mfcData.field4}">
+									<option selected="selected"
+										th:value="${service.mfcData != null} ? ${service.mfcData.field4} : '1' ">КД</option>
+									<option
+										th:value="${service.mfcData != null} ? ${service.mfcData.field4} : '1' ">ЭКС</option>
+								</select>
+							</div>
 						</div>
 					</td>
 				</tr>
 			</th:block>
 		</table>
-		<input class="btn btn-lg btn-success" value="Отправить" type="submit"
-			onclick="alert('Данные отправлены!')" />
+		<input class="btn btn-lg btn-success" value="Отправить" type="submit" />
+		<!-- onclick="alert('Данные отправлены!')"  />-->
 	</form>
 </body>
 </html>

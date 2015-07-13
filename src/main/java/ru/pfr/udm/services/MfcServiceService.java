@@ -13,4 +13,5 @@ import ru.udm.pfr.models.MfcService;
  */
 public interface MfcServiceService {
 	public List<MfcService> getServiceList();
+	public MfcService getByid(Long id);
 }

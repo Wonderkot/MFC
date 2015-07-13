@@ -20,10 +20,15 @@ import ru.udm.pfr.models.MfcService;
 public class MfcServiceServiceImpl implements MfcServiceService {
 	@Autowired
 	MfcServiceDao mfcServiceDao;
-	
+
 	@Override
 	public List<MfcService> getServiceList() {
 		return (List<MfcService>) mfcServiceDao.findAll();
+	}
+
+	@Override
+	public MfcService getByid(Long id) {
+		return mfcServiceDao.findOne(id);
 	}
 
 }
